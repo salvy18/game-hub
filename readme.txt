@@ -37,3 +37,6 @@ API Key
 
 HTTP Request
 npm i axios
+
+icons
+npm i react-icons@4.7.1
