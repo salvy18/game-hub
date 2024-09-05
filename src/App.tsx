@@ -16,7 +16,7 @@ function App() {
       {/* Lets hide the left panel for small devices*/}
       <Grid
         templateAreas={{
-          base: `"nav rightmain"`, // it will use this by default but if is > than 1024 will use the second
+          base: `"nav" "rightmain"`, // it will use this by default but if is > than 1024 will use the second
           lg: `"nav nav" "leftside rightmain"`, // 1024px it will use this when > 1024
         }}
       >
