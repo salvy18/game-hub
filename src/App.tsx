@@ -23,13 +23,11 @@ function App() {
           <NavBar></NavBar>
         </GridItem>
         <Show above="lg">
-          <GridItem area="leftside" bg="gold">
-            Left Area
-          </GridItem>
+          {/* <GridItem area="leftside" bg="gold"> */}
+          <GridItem area="leftside">Left Area</GridItem>
         </Show>
-        <GridItem area="rightmain" bg="dodgerblue">
-          Main
-        </GridItem>
+        {/* <GridItem area="rightmain" bg="dodgerblue"></GridItem> */}
+        <GridItem area="rightmain">Main</GridItem>
       </Grid>
     </>
   );
