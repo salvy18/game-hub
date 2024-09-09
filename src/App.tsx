@@ -9,8 +9,12 @@ import {
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <>
       {/* template areas what you see in "" means first row then the second means the second row */}
@@ -31,12 +35,14 @@ function App() {
         <Show above="lg">
           {/* <GridItem area="leftside" bg="gold"> */}
           <GridItem area="leftside" paddingX={5}>
-            <GenreList></GenreList>
+            <GenreList
+              onSelectGenre={(genre) => setSelectedGenre(genre)}
+            ></GenreList>
           </GridItem>
         </Show>
         {/* <GridItem area="rightmain" bg="dodgerblue"></GridItem> */}
         <GridItem area="rightmain">
-          <GameGrid></GameGrid>
+          <GameGrid selectedGenre={selectedGenre}></GameGrid>
         </GridItem>
       </Grid>
     </>
