@@ -20,13 +20,17 @@ function App() {
           base: `"nav" "rightmain"`, // it will use this by default but if is > than 1024 will use the second
           lg: `"nav nav" "leftside rightmain"`, // 1024px it will use this when > 1024
         }}
+        templateColumns={{
+          base: "1fr",
+          lg: "200px 1fr",
+        }}
       >
         <GridItem area="nav">
           <NavBar></NavBar>
         </GridItem>
         <Show above="lg">
           {/* <GridItem area="leftside" bg="gold"> */}
-          <GridItem area="leftside">
+          <GridItem area="leftside" paddingX={5}>
             <GenreList></GenreList>
           </GridItem>
         </Show>
