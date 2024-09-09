@@ -3,10 +3,10 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import useData from "../hooks/useData";
+import useGamesWithoutUsingGenerics from "../hooks/useGamesWithoutUsingGenerics";
 
 const GameGrid = () => {
-  const { data, error, isLoading } = useGames();
+  const { games, error, isLoading } = useGamesWithoutUsingGenerics();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -23,7 +23,7 @@ const GameGrid = () => {
               <GameCardSkeleton key={skeleton}></GameCardSkeleton>
             </GameCardContainer>
           ))}
-        {data.map((game) => (
+        {games.map((game) => (
           // <li key={game.id}>{game.name}</li>
           <GameCardContainer>
             <GameCard key={game.id} game={game}></GameCard>
