@@ -15,35 +15,34 @@ interface Props {
 }
 
 // const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-const GameGrid = ({gameQuery }: Props) => {
+const GameGrid = ({ gameQuery }: Props) => {
   // Now instead of using individual variables state lets use Query Objects pattern
 
   // const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding="10px"
-        spacing={6}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton></GameCardSkeleton>
-            </GameCardContainer>
-          ))}
-        {data.map((game) => (
-          // <li key={game.id}>{game.name}</li>
-          <GameCardContainer key={game.id}>
-            <GameCard game={game}></GameCard>
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      padding="10px"
+      spacing={6}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GameCardContainer key={skeleton}>
+            <GameCardSkeleton></GameCardSkeleton>
           </GameCardContainer>
         ))}
-      </SimpleGrid>
-    </>
+      {data.map((game) => (
+        // <li key={game.id}>{game.name}</li>
+        <GameCardContainer key={game.id}>
+          <GameCard game={game}></GameCard>
+        </GameCardContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
