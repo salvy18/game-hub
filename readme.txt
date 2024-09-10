@@ -40,3 +40,13 @@ npm i axios
 
 icons
 npm i react-icons@4.7.1
+
+
+----- Some commands
+if (error instanceof CanceledError) return;
+
+when Argument of type {} is not assignable to parameter of type something... to fix it:
+The problem
+const [ gameQuery, SetGameQuery ]  = useState<GameQuery>({})
+The fix
+const [ gameQuery, SetGameQuery ] = useState<GameQuery>({} as GameQuery )

@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
@@ -16,12 +17,23 @@ export interface Game {
     metacritic: number
 }
 
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>('/games', {
+const useGames = (
+    // Now instead of using individual variables state lets use Query Objects pattern
+    // selectedGenre: Genre | null, 
+    // selectedPlatform: Platform | null
+    gameQuery: GameQuery
+
+) => useData<Game>('/games', {
     params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id
+         // Now instead of using individual variables state lets use Query Objects pattern
+        // genres: selectedGenre?.id,
+        // platforms: selectedPlatform?.id
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id
     }
 },
-    [selectedGenre?.id, selectedPlatform?.id]);
+  // Now instead of using individual variables state lets use Query Objects pattern
+    // [selectedGenre?.id, selectedPlatform?.id]);
+    [gameQuery]);
 
 export default useGames;

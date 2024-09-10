@@ -14,10 +14,20 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
 
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  // Now instead of using individual variables state lets use Query Objects pattern
+
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+  //   null
+  // );
+
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
@@ -40,15 +50,28 @@ function App() {
           {/* <GridItem area="leftside" bg="gold"> */}
           <GridItem area="leftside" paddingX={5}>
             <GenreList
-              onSelectGenre={(genre) => setSelectedGenre(genre)}
-              selectedGenre={selectedGenre}
+              // selectedGenre={selectedGenre}
+              selectedGenre={gameQuery.genre}
+              // onSelectGenre={(genre) => setSelectedGenre(genre)}
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
             ></GenreList>
           </GridItem>
         </Show>
         {/* <GridItem area="rightmain" bg="dodgerblue"></GridItem> */}
         <GridItem area="rightmain">
-          <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(plaform) =>(setSelectedPlatform(plaform))}></PlatformSelector>
-          <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}></GameGrid>
+          <PlatformSelector
+            // selectedPlatform={selectedPlatform}
+            selectedPlatform={gameQuery.platform}
+            // onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
+            onSelectPlatform={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
+          ></PlatformSelector>
+          <GameGrid
+            // selectedGenre={selectedGenre}
+             // selectedPlatform={selectedPlatform}
+             gameQuery={gameQuery}           
+          ></GameGrid>
         </GridItem>
       </Grid>
     </>
