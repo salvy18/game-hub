@@ -1,7 +1,9 @@
 import {
   background,
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -62,17 +64,24 @@ function App() {
         </Show>
         {/* <GridItem area="rightmain" bg="dodgerblue"></GridItem> */}
         <GridItem area="rightmain">
-          <HStack spacing={5} paddingLeft={2} marginBottom={5}>
-            <PlatformSelector
-              // selectedPlatform={selectedPlatform}
-              // onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+          <Flex paddingLeft={2} marginBottom={5}>
+            <Box marginRight={5}>
+              <PlatformSelector
+                // selectedPlatform={selectedPlatform}
+                // onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
+                selectedPlatform={gameQuery.platform}
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              ></PlatformSelector>
+            </Box>
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
               }
-            ></PlatformSelector>
-            <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => (setGameQuery({...gameQuery, sortOrder}))}></SortSelector>
-          </HStack>
+            ></SortSelector>
+          </Flex>
           <GameGrid
             // selectedGenre={selectedGenre}
             // selectedPlatform={selectedPlatform}
