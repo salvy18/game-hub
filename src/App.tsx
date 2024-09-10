@@ -50,8 +50,8 @@ function App() {
           lg: "200px 1fr",
         }}
       >
-        <GridItem area="nav">
-          <NavBar
+        <GridItem area="nav" >
+          <NavBar 
             onSearch={(searchText) =>
               setGameQuery({ ...gameQuery, searchText })
             }
