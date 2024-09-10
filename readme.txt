@@ -1,4 +1,9 @@
+https://github.com/salvy18/game-hub.git
+
+
 git command
+
+
 
 git init
 git add .
@@ -40,32 +45,3 @@ npm i axios
 
 icons
 npm i react-icons@4.7.1
-
-
------ Some commands
-if (error instanceof CanceledError) return;
-
-when Argument of type {} is not assignable to parameter of type something... to fix it:
-The problem
-const [ gameQuery, SetGameQuery ]  = useState<GameQuery>({})
-The fix
-const [ gameQuery, SetGameQuery ] = useState<GameQuery>({} as GameQuery )
-
-
-when mapping to an object 
-The problem
- const emojiMap = {
-        3: {src: meh, alt: 'meh'},
-        4: {src: thumbsUp, alt: 'recomended'},
-        5: {src: bullsEye, alt: 'exeptional'},
-    }
-
-<Image {...emojiMap[rating]}></Image>
-
-The fix
- const emojiMap: { [key: number]: ImageProps } = {
-        3: {src: meh, alt: 'meh'},
-        4: {src: thumbsUp, alt: 'recomended'},
-        5: {src: bullsEye, alt: 'exeptional'},
-    }
-  <Image {...emojiMap[rating]} boxSize='25px'></Image>
