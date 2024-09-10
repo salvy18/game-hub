@@ -25,15 +25,16 @@ const useGames = (
 
 ) => useData<Game>('/games', {
     params: {
-         // Now instead of using individual variables state lets use Query Objects pattern
+        // Now instead of using individual variables state lets use Query Objects pattern
         // genres: selectedGenre?.id,
         // platforms: selectedPlatform?.id
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText
     }
 },
-  // Now instead of using individual variables state lets use Query Objects pattern
+    // Now instead of using individual variables state lets use Query Objects pattern
     // [selectedGenre?.id, selectedPlatform?.id]);
     [gameQuery]);
 
