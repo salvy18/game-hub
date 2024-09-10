@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Grid,
   GridItem,
+  HStack,
   Show,
 } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
@@ -13,6 +14,7 @@ import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -51,26 +53,29 @@ function App() {
           <GridItem area="leftside" paddingX={5}>
             <GenreList
               // selectedGenre={selectedGenre}
-              selectedGenre={gameQuery.genre}
               // onSelectGenre={(genre) => setSelectedGenre(genre)}
+              selectedGenre={gameQuery.genre}
               onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
             ></GenreList>
           </GridItem>
         </Show>
         {/* <GridItem area="rightmain" bg="dodgerblue"></GridItem> */}
         <GridItem area="rightmain">
-          <PlatformSelector
-            // selectedPlatform={selectedPlatform}
-            selectedPlatform={gameQuery.platform}
-            // onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          ></PlatformSelector>
+          <HStack spacing={5} paddingLeft={2} marginBottom={5}>
+            <PlatformSelector
+              // selectedPlatform={selectedPlatform}
+              // onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+            ></PlatformSelector>
+            <SortSelector></SortSelector>
+          </HStack>
           <GameGrid
             // selectedGenre={selectedGenre}
-             // selectedPlatform={selectedPlatform}
-             gameQuery={gameQuery}           
+            // selectedPlatform={selectedPlatform}
+            gameQuery={gameQuery}
           ></GameGrid>
         </GridItem>
       </Grid>
