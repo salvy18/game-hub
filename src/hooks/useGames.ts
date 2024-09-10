@@ -29,7 +29,8 @@ const useGames = (
         // genres: selectedGenre?.id,
         // platforms: selectedPlatform?.id
         genres: gameQuery.genre?.id,
-        platforms: gameQuery.platform?.id
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder
     }
 },
   // Now instead of using individual variables state lets use Query Objects pattern
