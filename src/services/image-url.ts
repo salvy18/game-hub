@@ -1,5 +1,7 @@
 // Rod: This will optimize the image by reducing its image size
 
+import noImage from '../assets/no-image-placeholder.webp'
+
 const getCroppedImageUrl = (url: string) => {
 
     // Sample how we normally get the url image with high definition
@@ -13,7 +15,7 @@ const getCroppedImageUrl = (url: string) => {
 
     // This returns the position where it found the media/
 
-    if (!url) return '';
+    if (!url) return noImage;
     const target = 'media/'
     const index = url.indexOf(target) + target.length;
     const modifiedUrl = url.slice(0, index) + 'crop/600/400/' + url.slice(index);
